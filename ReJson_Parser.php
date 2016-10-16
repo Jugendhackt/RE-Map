@@ -18,13 +18,13 @@ function read_json($json, $final_json){
         $final_array['name'] = "Keine Angabe";
         $final_array['gueter'] = "Keine Angabe";
         $final_array['transport'] = "Keine Angabe";
-        $final_array['time'] = "Keine Angabe";
+        $final_array['details'] = "Keine Angabe";
         $final_array['street'] = "Keine Angabe";
 
         if(!empty($item['name'])) $final_array['name'] = $item['name'];
         if(!empty($item['gueter'])) $final_array['gueter'] = $item['gueter'];
         if(!empty($item['transport'])) $final_array['transport'] = $item['transport'];
-        if(!empty($item['zeit'])) $final_array['time'] = $item['zeit'];
+        if(!empty($item['anschrift'])) $final_array['details'] = $item['anschrift'];
         if(!empty($item['adresse'])){
             $final_array['street'] = $item['adresse'];
             $str_array = explode(" ", $final_array['street']);
