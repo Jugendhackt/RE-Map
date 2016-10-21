@@ -28,7 +28,7 @@
 
     <form>
         <input type="text" name="suchfeld" id="suchfeld" placeholder="Suchbegriff">
-        <input type="button" id="btn-search" value="Suchen"><br>
+        <input type="button" id="btn-search" value="Suchen" onclick="searchFunc();"><br>
         <input type="checkbox" class="checks" name="check_floh" id="check_floh" checked>
         <label for="check_floh" class="checks" id="label_check_floh">Flohm&auml;rkte</label>
         <input type="checkbox" class="checks" name="check_re" id="check_re" checked>
@@ -42,7 +42,7 @@
 
 	<script type="text/javascript">
 
-	$("#btn-search").click(function (element) {
+	searchFunc = function () {
 		var search = $("#suchfeld").val();
 		floMap = document.getElementById("check_floh").checked;
 		reMap = document.getElementById("check_re").checked;
@@ -52,7 +52,16 @@
 		init = true;
 		map.remove();
 		readData(search);
-	})
+	}
+
+	var txt = document.getElementById("suchfeld");
+	var go = document.getElementById("btn-search");
+	txt.addEventListener("keypress", function(event) {
+	    if (event.keyCode == 13){
+	    	event.preventDefault();
+	        go.click();
+	    }
+	});
 
 		buildMap = function(database, marker){
 			$.getJSON(database,function(json2){
